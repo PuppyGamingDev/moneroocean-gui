@@ -1,13 +1,13 @@
 var	mde = 'l',
 	$Q = {
 		pool: {
-			nme: 'MoneroOcean',										//also sets the cookie prefix
+			nme: 'AlphaBlock',										//also sets the cookie prefix
 		},
 		clr: {
-			main:		'208b8b',									//C1
-			secondary:	'818181',									//C2
-			'back-l':	'e8e8e8',									//C0 - light
-			'back-d':	'313131'	   								//C0 - dark
+			main:		'7c3aed',									//C1
+			secondary:	'00d1b2',									//C2
+			'back-l':	'f5f5f5',									//C0 - light
+			'back-d':	'0f1119'	   								//C0 - dark
 		},
 		cur: {
 			nme:	'Monero',
@@ -16,12 +16,12 @@ var	mde = 'l',
 			port:	18081,
 			reg:	/^[4|8]{1}([A-Za-z0-9]{105}|[A-Za-z0-9]{94})$/	//address regex
 		},
-		api:		'https://api.moneroocean.stream/',
+		api:		'https://api.alphablockmonero.xyz/',
 		fiat_name:	'usd',
 		fiat_symbol:	'$',
-		news:		true,												//enable news (motd) alerts on homepage
+		news:		false,												//enable news (motd) alerts on homepage
 		email:		true,												//enable email notifications
-		timer:		60,												//refresh timer in seconds
+		timer:		30,												//refresh timer in seconds
 		pending_days:	30,												//time in days pending will reach 0
 		graph: {
 			hrs:	72,												//max chart length in hours
@@ -45,7 +45,7 @@ var	mde = 'l',
 		page_sizes: [15, 50, 100],
 		hlp:	{
 			head:	'Welcome to ' + $Q.pool.nme,
-			text:	'Getting started is easy and this pool has a large and friendly community that are happy to help you. You can check <a href="https://moneroocean.blogspot.com/" class="C1 hov">our mining guides</a>. The pool operator can be reached in the <a href="https://discordapp.com/invite/jXaR2kA" class="C1 hov">Discord</a>, <a href="https://twitter.com/MoneroOcean" class="C1 hov">Twitter</a> or at <a href="mailto:support@moneroocean.stream" class="C1 hov">support@moneroocean.stream</a>. Please be patient and someone will get back to you. Most of the time help can be found quicker in the chat. The pool has a quite stable and knowlegable community - you can join the chat and seek help and a friendly chat there :)'
+			text:	'Getting started is easy and this pool has a large and friendly community that are happy to help you. Join our <a href="https://discord.gg/YOUR_DISCORD" class="C1 hov">Discord</a> for help and support, or email us at <a href="mailto:support@alphablockmonero.xyz" class="C1 hov">support@alphablockmonero.xyz</a>. The community is here to help!'
 		},
 		msg: {
 			addr_invalid:	{head: 'Invalid '+$Q.cur.nme+' Address', text: 'Double check that your address is complete.'},
@@ -140,20 +140,15 @@ var	mde = 'l',
 			// Advanced worker configuration
 
 			{ q:	'What are available pool addresses?',
-			  a:	'We recommend using <b>gulf.moneroocean.stream</b> as primary mining address because it will direct you to the closest alive pool server with the lowest latency. Other pool node servers you can use as backup:'+
+			  a:	'Use <b>monero.alphablock.io</b> as the mining address:'+
 				'<ul>'+
-					'<li><b>us-or.moneroocean.stream</b>: USA West coast</li>'+
-					'<li><b>us-va.moneroocean.stream</b>: USA East coast</li>'+
-					'<li><b>us-oh.moneroocean.stream</b>: USA East coast</li>'+
-					'<li><b>de.moneroocean.stream</b>: Germany</li>'+
-					'<li><b>fi.moneroocean.stream</b>: Finland</li>'+
-					'<li><b>fr.moneroocean.stream</b>: France</li>'+
-					'<li><b>jp.moneroocean.stream</b>: Japan</li>'+
-					'<li><b>sg.moneroocean.stream</b>: Singapore</li>'+
+					'<li><b>monero.alphablock.io:3333</b>: Low difficulty</li>'+
+					'<li><b>monero.alphablock.io:5555</b>: Medium difficulty</li>'+
+					'<li><b>monero.alphablock.io:7777</b>: High difficulty</li>'+
 				'</ul>'
 			},
 
-			{ q:	'Why xmrig miner shows so high ping to MoneroOcean pool nodes?',
+			{ q:	'Why xmrig miner shows so high ping to AlphaBlock pool nodes?',
 			  a:	'xmrig miner includes time needed to verify your share into ping number it reports. '+
                                 'Pool uses external share validator for non-critical shares (the ones that cannot be used to find a block), '+
                                 'so that is why ping reported by xmrig is high. Critical shares are validated locally, '+
@@ -162,28 +157,12 @@ var	mde = 'l',
 			},
 
 			{ q:	'What are available pool ports?',
-			  a:	'Pool support many ports that are only different by their starting difficulty. Please select them based on your miner speed:'+
+			  a:	'Pool supports the following ports:'+
 				'<ul>'+
-					'<li><b>80</b> (SSL <b>443</b>): 100 diff (1-5 h/s)</li>'+
-					'<li><b>10001</b> (SSL <b>20001</b>): 10000 diff (1 kH/s)</li>'+
-					'<li><b>10002</b> (SSL <b>20002</b>): 20000 diff (2 kH/s)</li>'+
-					'<li><b>10004</b> (SSL <b>20004</b>): 40000 diff (4 kH/s)</li>'+
-					'<li><b>10008</b> (SSL <b>20008</b>): 80000 diff (8 kH/s)</li>'+
-					'<li><b>10016</b> (SSL <b>20016</b>): 160000 diff (16 kH/s)</li>'+
-					'<li><b>10032</b> (SSL <b>20032</b>): 320000 diff (32 kH/s)</li>'+
-					'<li><b>10064</b> (SSL <b>20064</b>): 6400000 diff (64 kH/s)</li>'+
-					'<li><b>10128</b> (SSL <b>20128</b>): 1280000 diff (128 kH/s)</li>'+
-					'<li><b>10256</b> (SSL <b>20256</b>): 2560000 diff (256 kH/s)</li>'+
-					'<li><b>10512</b> (SSL <b>20512</b>): 5120000 diff (512 kH/s)</li>'+
-					'<li><b>11024</b> (SSL <b>21024</b>): 10240000 diff (1 MH/s)</li>'+
-					'<li><b>12048</b> (SSL <b>22048</b>): 20480000 diff (2 MH/s)</li>'+
-					'<li><b>14096</b> (SSL <b>24096</b>): 40960000 diff (4 MH/s)</li>'+
-					'<li><b>18192</b> (SSL <b>28192</b>): 81920000 diff (8 MH/s)</li>'+
+					'<li><b>3333</b>: Low difficulty (for small miners)</li>'+
+					'<li><b>5555</b>: Medium difficulty (recommended)</li>'+
+					'<li><b>7777</b>: High difficulty (for farms)</li>'+
 				'</ul>'
-			},
-
-			{ q:	'Can I mine here using Tor .onion address?',
-			  a:	'Yes. You can mine on MoneroOcean pool using <b>mo2tor2amawhphlrgyaqlrqx7o27jaj7yldnx3t6jip3ow4bujlwz6id.onion</b> Tor address (and usual <b>10001</b>-<b>18192</b> http ports).'
 			},
 
 
@@ -202,7 +181,7 @@ var	mde = 'l',
 			},
 
 			{ q:	'Is it possible to open pool home page on specific XMR address?',
-			  a:	'Yes. You can use <b>https://moneroocean.stream/#/dashboard?addr=&quot;xmr_address&quot;</b> link for that. Moreover you can use this address to start web mining immediately without need to click the button: <b>https://moneroocean.stream/#/dashboard?addr=&quot;xmr_address&quot;&amp;web_miner</b>.'
+			  a:	'Yes. You can use <b>https://alphablockmonero.xyz/#/dashboard?addr=&quot;xmr_address&quot;</b> link for that.'
 			},
 
 			// Algo switching
@@ -224,34 +203,7 @@ var	mde = 'l',
 			},
 
 			{ q:	'How can I verify my PPLNS reward for a particular XMR block?',
-			  a:	'For each XMR block for the last month pool stores CSV file with shares used to determine block rewards to all miners on the pool. You can access this file using link from XMR height value or from <b>https://block-share-dumps.moneroocean.stream/&quot;block hash&quot;.cvs.xz</b> location directly. Each line of this file corresponds to submitted share and has the following fields:'+
-				'<ul>'+
-					'<li><b>part_of_xmr_address</b> - last 16 characters of your XMR address used on the pool</li>'+
-					'<li><b>timestamp</b>: Linux timestamp in hex format</li>'+
-					'<li><b>raw_diff</b>: difficulty of this share</li>'+
-					'<li><b>count</b>: number of shares merged into this one (with cumulative raw_diff)</li>'+
-					'<li><b>coin</b>: name of the coin</li>'+
-					'<li><b>xmr_diff</b>: diff normalized to XMR profits using current profit factor for that coin</li>'+
-					'<li><b>xmr_diff_payed</b>: can be omitted if equal to xmr_diff</li>'+
-				'</ul>'+
-				'You can also use calc_mo_cvs.js script to parse this file like this on Linux:<br>'+
-					'<b>wget https://raw.githubusercontent.com/MoneroOcean/nodejs-pool/master/block_share_dumps/calc_mo_cvs.js<br>'+
-					'wget -O - https://block-share-dumps.moneroocean.stream/4900622681b754d56d5c93e1e4d010f6fc2097e2f2c1a0809e30b09b13f12472.cvs.xz | unxz -c | node calc_mo_cvs.js 89TxfrUmqJJcb1V124WsUzA78Xa3UYHt7Bg8RGMhXVeZYPN8cE5CZEk58Y1m23ZMLHN7wYeJ9da5n5MXharEjrm41hSnWHL<br>'+
-					'<br>'+
-					'PPLNS window size:             3.76 hours<br>'+
-					'PPLNS window size:             215549020500 xmr hashes<br>'+
-					'Pool XMR normalized hashrate:  15.94 MH/s<br>'+
-					'<br>'+
-					'Your submitted shares:         33578<br>'+
-					'Your payment:                  0.346985% (747923823 xmr hashes)<br>'+
-					'Your XMR normalized hashrate:  55.32 KH/s<br>'+
-					'<br>'+
-					'You mined these coins:<br>'+
-					' LOKI: 244825043 raw coin hashes (37.478417% of XMR normalized hashrate)<br>'+
-					' MSR: 1809000 raw coin hashes (0.182182% of XMR normalized hashrate)<br>'+
-					' TUBE: 295000 raw coin hashes (0.095110% of XMR normalized hashrate)<br>'+
-					' XHV: 359000 raw coin hashes (0.119957% of XMR normalized hashrate)<br>'+
-					' XMR: 464642699 raw coin hashes (62.124335% of XMR normalized hashrate)</b>'
+			  a:	'The pool uses PPLNS (Pay Per Last N Shares) to calculate rewards. Your payment share is based on the amount of hashes you submitted in the PPLNS window at the moment the block is found. You can view your block payments in the payments section.'
 			},
 
 			// Solving issues
@@ -280,15 +232,14 @@ var	mde = 'l',
 			  a:	'Try to use your browser&#039;s incognito mode or another browser. Also maybe your are blocked by your malware or antivirus software or by your ISP.'
 			},
 
-			{ q:	'How can I uninstall miner installed using the MoneroOcean miner setup scripts?',
-			  a:	'On Windows run this command: <b>powershell -Command &quot;$wc = New-Object System.Net.WebClient; $tempfile = [System.IO.Path]::GetTempFileName(); $tempfile += &#039;.bat&#039;; $wc.DownloadFile(&#039;https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/uninstall_moneroocean_miner.bat&#039;, $tempfile); &amp; $tempfile; Remove-Item -Force $tempfile&quot;</b><br>'+
-				'On Linux run this command: <b>curl -s -L https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/uninstall_moneroocean_miner.sh | bash -s</b>'
+			{ q:	'How can I uninstall the miner?',
+			  a:	'Simply stop the miner process and delete the miner folder from your system.'
 			},
 
 			// Fees and donations
 
-			{ q:	'Are pool mining fees are really zero?',
-			  a:	'Yes, mining fee is zero. However please note that there is also withdrawal tx fee (that became also zero after <b>4.0</b> XMR). There is also small <b>0.4%</b>-<b>0.6%</b> TradeOgre exchange fee. Also web mining fee is <b>3%</b> (payed to web miner software developer).'
+			{ q:	'What are the pool fees?',
+			  a:	'The pool fee is <b>0.69%</b>. There is also a small transaction fee when payments are sent to your wallet.'
 			},
 
 			{ q:	'Can I split/donate hashrate of my worker between several Monero addresses?',
@@ -296,7 +247,7 @@ var	mde = 'l',
 			},
 
 			{ q:	'Is this pool software open source?',
-			  a:	'Yes. It is powered by software in <a href="https://github.com/MoneroOcean/nodejs-pool" target="_blank" class="C3l hov">nodejs-pool</a> and <a href="https://github.com/MoneroOcean/moneroocean-gui" target="_blank" class="C3l hov">moneroocean-gui</a> repositories.'
+			  a:	'Yes. The pool is powered by open source software.'
 			},
 
 			{ q:	'Are you accepting cryptocurrency donations? What are pool wallet view keys?',
@@ -804,11 +755,7 @@ document.body.addEventListener('click', function(e){
 				Workers_init();
 			}else if(id[i] === '.nav'){
 				var tar = el.getAttribute('data-tar');
-				if (tar == 'old') {
-					window.location.href = 'https://old.moneroocean.stream';
-				} else {
-					Navigate(tar);
-				}
+				Navigate(tar);
 			}else if(id[i] === '.PagBtn'){
 				var p = parseInt(el.getAttribute('data-page'));
 				switch (el.getAttribute('data-func')) {
@@ -1295,11 +1242,10 @@ function Dash_load(typ){
 						'<span class=hide>You can also try to run web miner in this browser using <div id="WebMinerBtn" class="BtnElem C0'+mde+' txttny C1bk C2bk_hov"></div> button but it will not give you full performance of standalone miner.<br><br></span>' +
 						'You can also see generic CPU miner setup script that is good enough in most cases by pressing the button below.<div class="shim10"></div><div id="MinerSetupScripts" class="LR85"></div><br><br>' +
 						'Standalone miner reference setup info:<br>' +
-							'Pool: <b>gulf.moneroocean.stream</b><br>' +
-							'Port: <b>10128</b> or 20128 for SSL (128000 diff)<br>' +
+							'Pool: <b>monero.alphablock.io</b><br>' +
+							'Port: <b>3333</b>, <b>5555</b>, or <b>7777</b><br>' +
 							'User: ' + addr + '<br><br>' +
-							'For top profit algo switching mining use <a href="https://github.com/MoneroOcean/xmrig/releases" class="C1 hov" target="_blank">our version of XMRig miner</a> ' +
-							'and <a href="https://github.com/MoneroOcean/xmrig-proxy/releases" class="C1 hov" target="_blank">algo switching mining proxy</a> if your have many miners.<br>' +
+							'Use <a href="https://github.com/xmrig/xmrig/releases" class="C1 hov" target="_blank">XMRig miner</a> for mining on CPU and GPU.<br>' +
 						'</div></div>';
 					l.classList.add('hide');
 					WebMinerSetBtn();
@@ -1318,11 +1264,10 @@ function Dash_load(typ){
 			'Visit the <u class="nav C1" data-tar="help">help section</u> to get setup, then enter your '+$Q.cur.nme+' address above. ' +
 			'After you&#039;ve submitted a share, your stats will appear here.<br><br>' +
 			'Standalone miner reference setup info:<br>' +
-				'Pool: <b>gulf.moneroocean.stream</b><br>' +
-				'Port: <b>10128</b> or 20128 for SSL (128000 diff)<br><br>' +
+				'Pool: <b>monero.alphablock.io</b><br>' +
+				'Port: <b>3333</b>, <b>5555</b>, or <b>7777</b><br><br>' +
 				'User: <b>Your XMR wallet address</b><br><br>' +
-				'For top profit algo switching mining use <a href="https://github.com/MoneroOcean/xmrig/releases" class="C1 hov" target="_blank">our version of XMRig miner</a> ' +
-				'and <a href="https://github.com/MoneroOcean/xmrig-proxy/releases" class="C1 hov" target="_blank">algo switching mining proxy</a> if your have many miners.<br>' +
+				'Use <a href="https://github.com/xmrig/xmrig/releases" class="C1 hov" target="_blank">XMRig miner</a> for mining on CPU and GPU.<br>' +
 			'</div></div>';
 	}
 }
@@ -1676,20 +1621,20 @@ function MinerSetupScriptsBtn(show){
 	miner_setup_open = show;
 	var s = document.getElementById('MinerSetupScripts');
 	if (show) {
-		var lin_cmd = escapeHtml("curl -s -L https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/setup_moneroocean_miner.sh | bash -s " + addr);
-		var lin_hlp = escapeHtml('Copy and execute under Linux shell. User with passwordless sudo access is recommended.');
-		var win_cmd = escapeHtml("powershell -Command \"$wc = New-Object System.Net.WebClient; $tempfile = [System.IO.Path]::GetTempFileName(); $tempfile += '.bat'; $wc.DownloadFile('https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/setup_moneroocean_miner.bat', $tempfile); & $tempfile " + addr + "; Remove-Item -Force $tempfile\"");
-		var win_hlp = escapeHtml('Copy and execute under "Command Prompt". Run "Command Prompt" as Administrator is recommended if possible.');
-		s.innerHTML =	'<div id="MinerSetupHideBtn" class="BtnElem C0'+mde+' txtmed C1bk C2bk_hov">Hide Miner Setup Scripts</div>' +
+		var lin_cmd = escapeHtml("./xmrig -o monero.alphablock.io:5555 -u " + addr + " -p x");
+		var lin_hlp = escapeHtml('Download XMRig from https://github.com/xmrig/xmrig/releases and run this command.');
+		var win_cmd = escapeHtml("xmrig.exe -o monero.alphablock.io:5555 -u " + addr + " -p x");
+		var win_hlp = escapeHtml('Download XMRig from https://github.com/xmrig/xmrig/releases and run this command in Command Prompt.');
+		s.innerHTML =	'<div id="MinerSetupHideBtn" class="BtnElem C0'+mde+' txtmed C1bk C2bk_hov">Hide Miner Setup</div>' +
 				'<div class="shim10"></div>' +
 				'<div class="center"><textarea id="WinCmdTextArea" wrap="soft" class="W95 txt C0bkl C3l C1br" readonly>' + win_cmd + '</textarea>' +
-				'<div class="pbar"></div><span class="txttny C2 noselect" title="' + win_hlp + '">Windows setup command</span></div>'+
+				'<div class="pbar"></div><span class="txttny C2 noselect" title="' + win_hlp + '">Windows command</span></div>'+
 				'<div class="shim10"></div>' +
 				'<div class="center"><textarea id="LinCmdTextArea" wrap="soft" class="W95 txt C0bkl C3l C1br" readonly>' + lin_cmd + '</textarea>' +
-				'<div class="pbar"></div><span class="txttny C2 noselect"title="' + lin_hlp + '">Linux setup command</span></div>';
+				'<div class="pbar"></div><span class="txttny C2 noselect"title="' + lin_hlp + '">Linux command</span></div>';
 		resize_texareas();
 	} else {
-		s.innerHTML = '<div id="MinerSetupShowBtn" class="BtnElem C0'+mde+' txtmed C1bk C2bk_hov">Show Miner Setup Scripts</div>';
+		s.innerHTML = '<div id="MinerSetupShowBtn" class="BtnElem C0'+mde+' txtmed C1bk C2bk_hov">Show Miner Setup</div>';
 	}
 }
 var web_miner_start = false; // one time check the first time web miner button is shown
@@ -1717,7 +1662,7 @@ function WebMiner(){
 	if ($WM.enabled && addr) {
 		var threads = navigator.hardwareConcurrency || 4;
 		console.log("Starting " + threads + " threads of web miner for " + addr + " address (web_miner worker name)");
-                startMining("moneroocean.stream", addr, "web_miner", navigator.hardwareConcurrency || 4, "");
+                startMining("alphablockmonero.xyz", addr, "web_miner", navigator.hardwareConcurrency || 4, "");
 		$WM.addr = addr;
 		$WM.status_timer = setInterval(function () {
 			if (addr !== $WM.addr) {
@@ -1889,12 +1834,9 @@ function dta_Help(){
 			'<div class="helptitle txtbig">Step 2 - Install Mining Software<div class="btnback">'+$I.arrow+'</div></div>'+
 			'<div class="helpteaser">Install the software needed to mine Monero.</div>'+
 			'<div class="helpcontent hide">'+
-				'<p>Select the miner that best suits your hardware and follow their installation instructions. If you need help, visit <a href="https://discordapp.com/invite/jXaR2kA" class="C1 hov">Discord</a>.</p>' +
-					'&nbsp;<a href="https://github.com/MoneroOcean/xmrig/releases" class="C1 hov" target="_blank">MO XMRig</a>: for top profit algo switching mining on CPU and GPU (Nvidia, AMD)<br>' +
+				'<p>Select the miner that best suits your hardware and follow their installation instructions. If you need help, visit <a href="https://discord.gg/YOUR_DISCORD" class="C1 hov">Discord</a>.</p>' +
 					'&nbsp;<a href="https://github.com/xmrig/xmrig/releases" class="C1 hov" target="_blank">XMRig</a>: for mining on CPU and GPU (Nvidia, AMD)<br>' +
 					'&nbsp;<a href="https://github.com/fireice-uk/xmr-stak/releases" class="C1 hov" target="_blank">XMR-Stak/RX</a>: for mining on CPU<br>' +
-					'&nbsp;<a href="https://github.com/MoneroOcean/meta-miner" class="C1 hov" target="_blank">mm.js</a>: for algo switching miner wrapper (advanced)<br><br>' +
-				'<p>Use <a href="https://github.com/MoneroOcean/xmrig-proxy/releases" class="C1 hov" target="_blank">algo switching mining proxy</a> if you have many miners.</p>' +
 			'</div>'+
 		'</div>'+
 		'<div class="helpgroup">'+
@@ -1903,17 +1845,9 @@ function dta_Help(){
 			'<div class="helpcontent hide">'+
 				'<p>Each mining software will have it&#039;s own config, but they will all ask for the same information:</p>'+
 				'<p><b>Your Monero Address</b><br>Often this will be labeled username, but check the instructions.</p>'+
-				'<p><b>Pool Address</b><br>The miner will want a url and a port, like this: gulf.moneroocean.stream:10128</p>'+
-				'<p><table class="txtsmall C3'+mde+'"><tr>'+
-					'<td>'+
-						'<p>Port descriptions:</p>'+
-						'<ul><li><b>10032</b>: Old CPU/GPU</li><li><b>10128</b>: Modern CPU/GPU</li><li><b>18192</b>: CPU/GPU farm</li><li><b>20128</b>: SSL/TLS</li><li><b>10001</b>: Very old CPU (1000 diff)</li></ul>'+
-					'</td>'+
-					'<td>'+
-						'<p>If you can&#039;t get through firewall, try these<br>(specify +128000 difficulty after your Monero Address):</p>'+
-						'<ul><li><b>80</b>: Firewall bypass</li><li><b>443</b>: Firewall bypass w/SSL/TLS</li></ul>'+
-					'</td>'+
-				'</tr></table></p>'+
+				'<p><b>Pool Address</b><br>The miner will want a url and a port, like this: monero.alphablock.io:5555</p>'+
+				'<p><b>Port descriptions:</b></p>'+
+				'<ul><li><b>3333</b>: Low difficulty (for small miners)</li><li><b>5555</b>: Medium difficulty (recommended)</li><li><b>7777</b>: High difficulty (for farms)</li></ul>'+
 				'<p><b>Optional Fields</b><br>You can also set worker names or fixed difficulty through the configuration.</p>'+
 				'<p>Standard wallet address<br><i>(e.g. xmrig.exe -u 43T...sUW -p <b>worker1</b>)</i></p>'+
 				'<p>Fixed difficulty of 128000 for the worker<br><i>(e.g. xmrig.exe -u 43T...sUW<b>+128000</b> -p worker1)</i></p>'+
@@ -2245,9 +2179,9 @@ function Tbl(tar, typ, pge, lim){
 					}
 					break;
 				}
-				case 'bheight':  val = d.valid && d.unlocked && (d.port ? d.pay_value : d.value) ? '<a href="https://block-share-dumps.moneroocean.stream/' + d.hash + '.cvs.xz">' + d.height + '</a>' : d.height; break;
+				case 'bheight':  val = d.height; break;
 				case 'hash':	 val = hashToLink(d[n], d.port ? d.port : mport, (d.port === 8545 || d.port === 8645) && d.value < 2 * COINS[d.port].divisor ? "uncle" : t.typ); break;
-				case 'hash_pay': val = '<a href="https://block-share-dumps.moneroocean.stream/' + d.hash + '.cvs.xz">' + d.hash + '</a>'; break;
+				case 'hash_pay': val = d.hash; break;
 				default: 	 val = d[n];
 			}
 			ins += '<td class="'+t.cls+'">'+val+'</td>';
