@@ -140,11 +140,11 @@ var	mde = 'l',
 			// Advanced worker configuration
 
 			{ q:	'What are available pool addresses?',
-			  a:	'Use <b>monero.alphablock.io</b> as the mining address:'+
+			  a:	'Use <b>alphablockmonero.xyz</b> as the mining address:'+
 				'<ul>'+
-					'<li><b>monero.alphablock.io:3333</b>: Low difficulty</li>'+
-					'<li><b>monero.alphablock.io:5555</b>: Medium difficulty</li>'+
-					'<li><b>monero.alphablock.io:7777</b>: High difficulty</li>'+
+					'<li><b>alphablockmonero.xyz:3333</b>: Low difficulty</li>'+
+					'<li><b>alphablockmonero.xyz:5555</b>: Medium difficulty</li>'+
+					'<li><b>alphablockmonero.xyz:7777</b>: High difficulty</li>'+
 				'</ul>'
 			},
 
@@ -1242,7 +1242,7 @@ function Dash_load(typ){
 						'<span class=hide>You can also try to run web miner in this browser using <div id="WebMinerBtn" class="BtnElem C0'+mde+' txttny C1bk C2bk_hov"></div> button but it will not give you full performance of standalone miner.<br><br></span>' +
 						'You can also see generic CPU miner setup script that is good enough in most cases by pressing the button below.<div class="shim10"></div><div id="MinerSetupScripts" class="LR85"></div><br><br>' +
 						'Standalone miner reference setup info:<br>' +
-							'Pool: <b>monero.alphablock.io</b><br>' +
+							'Pool: <b>alphablockmonero.xyz</b><br>' +
 							'Port: <b>3333</b>, <b>5555</b>, or <b>7777</b><br>' +
 							'User: ' + addr + '<br><br>' +
 							'Use <a href="https://github.com/xmrig/xmrig/releases" class="C1 hov" target="_blank">XMRig miner</a> for mining on CPU and GPU.<br>' +
@@ -1264,7 +1264,7 @@ function Dash_load(typ){
 			'Visit the <u class="nav C1" data-tar="help">help section</u> to get setup, then enter your '+$Q.cur.nme+' address above. ' +
 			'After you&#039;ve submitted a share, your stats will appear here.<br><br>' +
 			'Standalone miner reference setup info:<br>' +
-				'Pool: <b>monero.alphablock.io</b><br>' +
+				'Pool: <b>alphablockmonero.xyz</b><br>' +
 				'Port: <b>3333</b>, <b>5555</b>, or <b>7777</b><br><br>' +
 				'User: <b>Your XMR wallet address</b><br><br>' +
 				'Use <a href="https://github.com/xmrig/xmrig/releases" class="C1 hov" target="_blank">XMRig miner</a> for mining on CPU and GPU.<br>' +
@@ -1621,9 +1621,9 @@ function MinerSetupScriptsBtn(show){
 	miner_setup_open = show;
 	var s = document.getElementById('MinerSetupScripts');
 	if (show) {
-		var lin_cmd = escapeHtml("./xmrig -o monero.alphablock.io:5555 -u " + addr + " -p x");
+		var lin_cmd = escapeHtml("./xmrig -o alphablockmonero.xyz:5555 -u " + addr + " -p x");
 		var lin_hlp = escapeHtml('Download XMRig from https://github.com/xmrig/xmrig/releases and run this command.');
-		var win_cmd = escapeHtml("xmrig.exe -o monero.alphablock.io:5555 -u " + addr + " -p x");
+		var win_cmd = escapeHtml("xmrig.exe -o alphablockmonero.xyz:5555 -u " + addr + " -p x");
 		var win_hlp = escapeHtml('Download XMRig from https://github.com/xmrig/xmrig/releases and run this command in Command Prompt.');
 		s.innerHTML =	'<div id="MinerSetupHideBtn" class="BtnElem C0'+mde+' txtmed C1bk C2bk_hov">Hide Miner Setup</div>' +
 				'<div class="shim10"></div>' +
@@ -1845,7 +1845,7 @@ function dta_Help(){
 			'<div class="helpcontent hide">'+
 				'<p>Each mining software will have it&#039;s own config, but they will all ask for the same information:</p>'+
 				'<p><b>Your Monero Address</b><br>Often this will be labeled username, but check the instructions.</p>'+
-				'<p><b>Pool Address</b><br>The miner will want a url and a port, like this: monero.alphablock.io:5555</p>'+
+				'<p><b>Pool Address</b><br>The miner will want a url and a port, like this: alphablockmonero.xyz:5555</p>'+
 				'<p><b>Port descriptions:</b></p>'+
 				'<ul><li><b>3333</b>: Low difficulty (for small miners)</li><li><b>5555</b>: Medium difficulty (recommended)</li><li><b>7777</b>: High difficulty (for farms)</li></ul>'+
 				'<p><b>Optional Fields</b><br>You can also set worker names or fixed difficulty through the configuration.</p>'+
@@ -2716,3 +2716,4 @@ function getCookie(n){
 function delCookie(n){
     document.cookie = n+'=; Max-Age=-99999999;';
 }
+
