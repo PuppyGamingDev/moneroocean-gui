@@ -45,7 +45,7 @@ var	mde = 'l',
 		page_sizes: [15, 50, 100],
 		hlp:	{
 			head:	'Welcome to ' + $Q.pool.nme,
-			text:	'Getting started is easy and this pool has a large and friendly community that are happy to help you. Join our <a href="https://discord.gg/YOUR_DISCORD" class="C1 hov">Discord</a> for help and support, or email us at <a href="mailto:support@alphablockmonero.xyz" class="C1 hov">support@alphablockmonero.xyz</a>. The community is here to help!'
+			text:	'Getting started is easy and this pool has a large and friendly community that are happy to help you. Join our <a href="https://discord.gg/alphablock" class="C1 hov">Discord</a> for help and support, or email us at <a href="mailto:support@alphablock.io" class="C1 hov">support@alphablock.io</a>. The community is here to help!'
 		},
 		msg: {
 			addr_invalid:	{head: 'Invalid '+$Q.cur.nme+' Address', text: 'Double check that your address is complete.'},
@@ -2716,4 +2716,5 @@ function getCookie(n){
 function delCookie(n){
     document.cookie = n+'=; Max-Age=-99999999;';
 }
+
 
